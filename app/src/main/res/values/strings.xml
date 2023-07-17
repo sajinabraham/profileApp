@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ProfileApp</string>
+    <string name="my">My</string>
+    <string name="profile">Profile</string>
+    <string name="date">Date</string>
+    <string name="title_people">People</string>
+    <string name="title_profile_details">Profile</string>
+</resources>
