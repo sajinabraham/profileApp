@@ -12,7 +12,7 @@ import com.example.profileapp.R
 import com.example.profileapp.databinding.FragmentPeopleBinding
 import com.example.profileapp.presentation.adapter.MainListAdapter
 import com.example.profileapp.presentation.viewModel.PeopleViewModel
-import com.example.profileinfo.utils.NetworkResult
+import com.example.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

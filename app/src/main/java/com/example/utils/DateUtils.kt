@@ -1,4 +1,4 @@
-package com.example.profileinfo.utils
+package com.example.utils
 
 import android.net.ParseException
 import android.text.TextUtils
@@ -110,9 +110,7 @@ class DateUtils : android.text.format.DateUtils() {
             }
             val sdf = SimpleDateFormat(format, Locale.getDefault())
             try {
-                val date1: Date
-                date1 = sdf.parse(time)
-                return date1
+                return sdf.parse(time)
             } catch (e: Exception) {
                 e.printStackTrace()
             }

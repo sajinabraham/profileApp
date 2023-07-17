@@ -44,7 +44,6 @@
 
             </LinearLayout>
 
-
         </LinearLayout>
 
         <include
@@ -75,7 +74,6 @@
 
             </LinearLayout>
         </ScrollView>
-
 
     </LinearLayout>
 

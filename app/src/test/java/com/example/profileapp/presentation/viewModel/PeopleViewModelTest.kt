@@ -5,7 +5,7 @@ import androidx.lifecycle.asLiveData
 import com.example.profileapp.domain.model.PeopleModel
 import com.example.profileapp.domain.model.PeopleResult
 import com.example.profileapp.domain.repository.Repository
-import com.example.profileinfo.utils.NetworkResult
+import com.example.utils.NetworkResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking

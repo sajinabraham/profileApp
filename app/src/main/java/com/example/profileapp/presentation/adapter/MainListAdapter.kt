@@ -16,16 +16,17 @@ import javax.inject.Inject
 
 @FragmentScoped
 class MainListAdapter @Inject constructor() : ListAdapter<PeopleResult, MainListAdapter.ViewHolder>(
-        ListDiffCallback()
-    ) {
+    ListDiffCallback()
+) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
+        holder.bind(getItem(position))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(LayoutItemPeopleBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        ViewHolder(
+            LayoutItemPeopleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
 
 
     inner class ViewHolder internal constructor(private val binding: LayoutItemPeopleBinding) :

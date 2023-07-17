@@ -2,7 +2,7 @@ package com.example.profileapp.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.profileinfo.utils.NetworkResult
+import com.example.utils.NetworkResult
 import com.example.profileapp.domain.model.PeopleModel
 import com.example.profileapp.domain.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -39,12 +39,15 @@ class PeopleViewModel @Inject constructor(private val repository: Repository) : 
             response.message().toString().contains("timeout") -> {
                 NetworkResult.Error("Timeout")
             }
+
             response.body()!!.isEmpty() -> {
                 NetworkResult.Error("People not found.")
             }
+
             response.isSuccessful -> {
                 NetworkResult.Success(response.body())
             }
+
             else -> {
                 NetworkResult.Error(response.message())
             }

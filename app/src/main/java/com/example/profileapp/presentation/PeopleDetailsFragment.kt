@@ -7,7 +7,7 @@ import androidx.navigation.fragment.navArgs
 import coil.load
 import com.example.profileapp.R
 import com.example.profileapp.databinding.FragmentPeopleDetailsBinding
-import com.example.profileinfo.utils.DateUtils
+import com.example.utils.DateUtils
 
 class PeopleDetailsFragment : Fragment(R.layout.fragment_people_details) {
     private lateinit var binding: FragmentPeopleDetailsBinding
@@ -25,7 +25,9 @@ class PeopleDetailsFragment : Fragment(R.layout.fragment_people_details) {
             with(itemImage) {
                 profileCIV.load(args.peopleModel?.avatar)
                 tvJobtitle.text = args.peopleModel?.jobtitle
-                ("My Favorite Colour: " + args.peopleModel?.favouriteColor).also { tvFavColor.text = it }
+                ("My Favorite Colour: " + args.peopleModel?.favouriteColor).also {
+                    tvFavColor.text = it
+                }
             }
             (args.peopleModel?.firstName + args.peopleModel?.lastName).also { buildString { append(" ") } }
             itemEmail.tvEmail.text = args.peopleModel?.email

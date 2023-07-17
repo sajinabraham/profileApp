@@ -1,4 +1,4 @@
-package com.example.profileinfo.utils
+package com.example.utils
 
 sealed class NetworkResult<T>(
     val data: T? = null,
