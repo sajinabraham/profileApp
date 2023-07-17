@@ -47,38 +47,40 @@ class PeopleViewModelTest {
         Dispatchers.setMain(dispatcher)
         viewModel = PeopleViewModel(repository)
     }
+
     @After
     fun tearDown() {
         Dispatchers.resetMain()
     }
 
     @Test
-    fun `People data from response when Success Then result is Empty`()= runBlocking{
+    fun `People data from response when Success Then result is Empty`() = runBlocking {
         val response = PeopleModel()
         whenever(repository.getPeople()).thenReturn(Response.success(response))
 
         viewModel.getPeople()
 
-        viewModel.peopleResponse.asLiveData().observeForever{
-            assertEquals((it as NetworkResult.Success).data,response)
+        viewModel.peopleResponse.asLiveData().observeForever {
+            assertEquals((it as NetworkResult.Success).data, response)
         }
 
     }
 
     @Test
-    fun `People data from response when error then return Error`()= runBlocking{
-        whenever(repository.getPeople()).thenReturn(Response.error(404,"Error ".toResponseBody()))
+    fun `People data from response when error then return Error`() = runBlocking {
+        whenever(repository.getPeople()).thenReturn(Response.error(404, "Error ".toResponseBody()))
         viewModel.getPeople()
-        viewModel.peopleResponse.asLiveData().observeForever{
-            assertEquals((it as NetworkResult.Error).message,"")
+        viewModel.peopleResponse.asLiveData().observeForever {
+            assertEquals((it as NetworkResult.Error).message, "")
         }
 
     }
 
     @Test
-    fun `People data from response When success Then return all data`()= runBlocking{
+    fun `People data from response When success Then return all data`() = runBlocking {
         val people = arrayListOf(
-            PeopleResult(avatar = "",
+            PeopleResult(
+                avatar = "",
                 createdAt = "",
                 email = "sajinabraham@icloud.com",
                 favouriteColor = "red",
@@ -87,13 +89,15 @@ class PeopleViewModelTest {
                 id = "3",
                 jobtitle = "software developer",
                 lastName = "Abraham",
-                to= "")
+                to = ""
+            )
         )
 
-        Mockito.`when`(repository.getPeople()).thenReturn(Response.success(people) as Response<PeopleModel>)
+        Mockito.`when`(repository.getPeople())
+            .thenReturn(Response.success(people) as Response<PeopleModel>)
         viewModel.getPeople()
-        viewModel.peopleResponse.asLiveData().observeForever{
-            assertEquals((it as NetworkResult.Success).data,people)
+        viewModel.peopleResponse.asLiveData().observeForever {
+            assertEquals((it as NetworkResult.Success).data, people)
         }
 
     }
