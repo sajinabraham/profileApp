@@ -2,8 +2,8 @@ package com.example.profileapp.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.profileapp.domain.model.Countries
 import com.example.utils.NetworkResult
-import com.example.profileapp.domain.model.PeopleModel
 import com.example.profileapp.domain.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,10 +15,10 @@ import javax.inject.Inject
 @HiltViewModel
 class PeopleViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    private var _peopleResponse: MutableStateFlow<NetworkResult<PeopleModel>> =
+    private var _peopleResponse: MutableStateFlow<NetworkResult<Countries>> =
         MutableStateFlow(NetworkResult.Loading())
 
-    val peopleResponse: StateFlow<NetworkResult<PeopleModel>> get() = _peopleResponse
+    val peopleResponse: StateFlow<NetworkResult<Countries>> get() = _peopleResponse
 
     fun getPeople() = viewModelScope.launch {
         getPeopleCall()
@@ -33,7 +33,7 @@ class PeopleViewModel @Inject constructor(private val repository: Repository) : 
         }
     }
 
-    private fun handlePeopleResponse(response: Response<PeopleModel>): NetworkResult<PeopleModel> {
+    private fun handlePeopleResponse(response: Response<Countries>): NetworkResult<Countries> {
 
         return when {
             response.message().toString().contains("timeout") -> {

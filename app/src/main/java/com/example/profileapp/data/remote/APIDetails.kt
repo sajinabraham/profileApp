@@ -1,7 +1,7 @@
 package com.example.profileapp.data.remote
 
 
-import com.example.profileapp.domain.model.PeopleModel
+import com.example.profileapp.domain.model.Countries
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -10,6 +10,6 @@ import retrofit2.http.GET
 */
 
 interface APIDetails {
-    @GET("people")
-    suspend fun getPeople(): Response<PeopleModel>
+    @GET("countries.json")
+    suspend fun getPeople(): Response<Countries>
 }

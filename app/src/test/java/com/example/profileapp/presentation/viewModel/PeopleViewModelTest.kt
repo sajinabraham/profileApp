@@ -2,8 +2,10 @@ package com.example.profileapp.presentation.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.asLiveData
-import com.example.profileapp.domain.model.PeopleModel
-import com.example.profileapp.domain.model.PeopleResult
+import com.example.profileapp.domain.model.Countries
+import com.example.profileapp.domain.model.CountriesItem
+import com.example.profileapp.domain.model.Currency
+import com.example.profileapp.domain.model.Language
 import com.example.profileapp.domain.repository.Repository
 import com.example.utils.NetworkResult
 import kotlinx.coroutines.Dispatchers
@@ -55,7 +57,7 @@ class PeopleViewModelTest {
 
     @Test
     fun `People data from response when Success Then result is Empty`() = runBlocking {
-        val response = PeopleModel()
+        val response = Countries()
         whenever(repository.getPeople()).thenReturn(Response.success(response))
 
         viewModel.getPeople()
@@ -79,22 +81,20 @@ class PeopleViewModelTest {
     @Test
     fun `People data from response When success Then return all data`() = runBlocking {
         val people = arrayListOf(
-            PeopleResult(
-                avatar = "",
-                createdAt = "",
-                email = "sajinabraham@icloud.com",
-                favouriteColor = "red",
-                firstName = "sajin",
-                fromName = "",
-                id = "3",
-                jobtitle = "software developer",
-                lastName = "Abraham",
-                to = ""
+            CountriesItem(
+                capital = "Kabul",
+                code = "AF",
+                currency = Currency("AFN", "Afghan afghani", "$"),
+                demonym = "red",
+                flag = "https://restcountries.eu/data/afg.svg",
+                language = Language(code = "ps", iso639_2 = "Pashto", name = "", nativeName = ""),
+                name = "Afghanistan",
+                region = "AS",
             )
         )
 
         Mockito.`when`(repository.getPeople())
-            .thenReturn(Response.success(people) as Response<PeopleModel>)
+            .thenReturn(Response.success(people) as Response<Countries>)
         viewModel.getPeople()
         viewModel.peopleResponse.asLiveData().observeForever {
             assertEquals((it as NetworkResult.Success).data, people)

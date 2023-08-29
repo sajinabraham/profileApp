@@ -1,9 +1,8 @@
 package com.example.profileapp.domain.repository
 
-import com.example.profileapp.domain.model.PeopleModel
+import com.example.profileapp.domain.model.Countries
 import retrofit2.Response
 
 interface Repository {
-
-    suspend fun getPeople(): Response<PeopleModel>
+    suspend fun getPeople(): Response<Countries>
 }

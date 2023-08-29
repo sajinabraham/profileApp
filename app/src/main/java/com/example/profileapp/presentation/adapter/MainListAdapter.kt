@@ -10,12 +10,12 @@ import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.profileapp.R
 import com.example.profileapp.databinding.LayoutItemPeopleBinding
-import com.example.profileapp.domain.model.PeopleResult
+import com.example.profileapp.domain.model.CountriesItem
 import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject
 
 @FragmentScoped
-class MainListAdapter @Inject constructor() : ListAdapter<PeopleResult, MainListAdapter.ViewHolder>(
+class MainListAdapter @Inject constructor() : ListAdapter<CountriesItem, MainListAdapter.ViewHolder>(
     ListDiffCallback()
 ) {
 
@@ -32,10 +32,10 @@ class MainListAdapter @Inject constructor() : ListAdapter<PeopleResult, MainList
     inner class ViewHolder internal constructor(private val binding: LayoutItemPeopleBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(result: PeopleResult) = with(itemView) {
+        fun bind(result: CountriesItem) = with(itemView) {
 
             Glide.with(context)
-                .load(result.avatar)
+                .load(result.flag)
                 .placeholder(R.drawable.animate_loading)
                 .error(R.drawable.error_image)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -47,15 +47,15 @@ class MainListAdapter @Inject constructor() : ListAdapter<PeopleResult, MainList
     }
 }
 
-class ListDiffCallback : DiffUtil.ItemCallback<PeopleResult>() {
+class ListDiffCallback : DiffUtil.ItemCallback<CountriesItem>() {
 
     override fun areItemsTheSame(
-        oldItem: PeopleResult,
-        newItem: PeopleResult
-    ): Boolean = oldItem.id == newItem.id
+        oldItem: CountriesItem,
+        newItem: CountriesItem
+    ): Boolean = oldItem.code == newItem.code
 
     override fun areContentsTheSame(
-        oldItem: PeopleResult,
-        newItem: PeopleResult
+        oldItem: CountriesItem,
+        newItem: CountriesItem
     ): Boolean = oldItem == newItem
 }

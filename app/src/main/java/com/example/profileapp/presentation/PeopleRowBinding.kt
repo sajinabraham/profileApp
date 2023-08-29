@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
-import com.example.profileapp.domain.model.PeopleResult
+import com.example.profileapp.domain.model.CountriesItem
 
 class PeopleRowBinding {
 
@@ -12,17 +12,8 @@ class PeopleRowBinding {
 
         @BindingAdapter("onPeopleClickListener")
         @JvmStatic
-        fun onPeopleClickListener(peopleRowLayout: ConstraintLayout, result: PeopleResult) {
+        fun onPeopleClickListener(peopleRowLayout: ConstraintLayout, result: CountriesItem) {
             peopleRowLayout.setOnClickListener {
-                try {
-                    Log.d("onPeopleClickListener", "CALLED")
-                    val action =
-                        PeopleFragmentDirections.actionMainFragmentToProfileDetailsFragment(result)
-                    peopleRowLayout.findNavController().navigate(action)
-
-                } catch (e: Exception) {
-                    Log.d("onPeopleClickListener", e.toString())
-                }
             }
         }
     }

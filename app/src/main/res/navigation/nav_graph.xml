@@ -8,22 +8,6 @@
     <fragment
         android:id="@+id/peopleFragment"
         android:name="com.example.profileapp.presentation.PeopleFragment"
-        android:label="Profile Info">
-        <action
-            android:id="@+id/action_mainFragment_to_profileDetailsFragment"
-            app:destination="@id/peopleDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/peopleDetailsFragment"
-        android:name="com.example.profileapp.presentation.PeopleDetailsFragment"
-        android:label="User Details"
-        tools:layout="@layout/fragment_people_details">
-        <action
-            android:id="@+id/action_profileDetailsFragment_to_peopleFragment"
-            app:destination="@id/peopleFragment" />
-        <argument
-            android:name="peopleModel"
-            app:argType="com.example.profileapp.domain.model.PeopleResult"
-            app:nullable="true" />
+        android:label="Countries list">
     </fragment>
 </navigation>
